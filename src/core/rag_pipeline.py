@@ -1,5 +1,5 @@
 from llm import get_llm
-from retriever import get_retriever
+from src.core.retriever import get_retriever
 
 llm = get_llm()
 retriever = get_retriever()
