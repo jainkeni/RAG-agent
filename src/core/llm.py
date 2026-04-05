@@ -1,14 +1,14 @@
-from openai import OpenAI
-from config import OPENAI_API_KEY
-
-client = OpenAI(api_key=OPENAI_API_KEY)
+# src/core/llm.py
+from langchain_openai import ChatOpenAI
+from src.utils.config import OPENAI_API_KEY
 
 def get_llm():
-    def generate(prompt):
-        response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0
-        )
-        return response.choices[0].message.content
-    return generate
+    """Get OpenAI LLM"""
+    if not OPENAI_API_KEY:
+        raise ValueError("OPENAI_API_KEY not found. Please set it in .env file")
+    
+    return ChatOpenAI(
+        model="gpt-3.5-turbo",
+        temperature=0.7,
+        api_key=OPENAI_API_KEY
+    )

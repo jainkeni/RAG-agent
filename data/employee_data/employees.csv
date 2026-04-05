@@ -1,0 +1,11 @@
+employee_id,name,email,department,designation,joining_date,leave_balance,manager
+E001,John Doe,john.doe@company.com,Engineering,Senior Software Engineer,2020-01-15,20,E010
+E002,Jane Smith,jane.smith@company.com,HR,HR Manager,2019-06-01,20,E011
+E003,Mike Johnson,mike.johnson@company.com,Sales,Sales Executive,2021-03-10,18,E012
+E004,Sarah Williams,sarah.williams@company.com,Marketing,Marketing Manager,2020-08-20,20,E011
+E005,Alex Brown,alex.brown@company.com,Finance,Accountant,2021-11-05,15,E013
+E010,David Lee,david.lee@company.com,Engineering,Engineering Head,2015-02-01,20,E015
+E011,Emma Taylor,emma.taylor@company.com,HR,HR Head,2018-05-10,20,E015
+E012,Robert Miller,robert.miller@company.com,Sales,Sales Head,2017-07-15,20,E015
+E013,Lisa Anderson,lisa.anderson@company.com,Finance,Finance Head,2016-04-20,20,E015
+E015,CEO,ceo@company.com,Management,CEO,2010-01-01,25,

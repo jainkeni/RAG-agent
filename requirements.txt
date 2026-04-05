@@ -1,11 +1,23 @@
+# Core RAG
 langchain
 langchain-community
 langchain-openai
 langchain-text-splitters
 chromadb
 openai
+
+# Web Search
 tavily-python
+
+# Environment & Config
 python-dotenv
+
+# Document Processing
 pypdf
 unstructured
+
+# Data Processing
 pandas
+
+# Utilities
+python-dateutil

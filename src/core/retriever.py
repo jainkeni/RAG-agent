@@ -1,22 +1,30 @@
-from langchain_community.vectorstores import Chroma
-from embeddings import get_embeddings
+# src/core/retriever.py
+import os
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
+from src.utils.config import OPENAI_API_KEY
 
-CHROMA_PATH = "chroma_db"
-
-def get_vectorstore():
-    db = Chroma(
-        persist_directory=CHROMA_PATH,
-        embedding_function=get_embeddings()
-    )
-    return db
-
+def get_embeddings():
+    """Get OpenAI embeddings"""
+    if not OPENAI_API_KEY:
+        raise ValueError("OPENAI_API_KEY not found. Please set it in .env file")
+    
+    return OpenAIEmbeddings(api_key=OPENAI_API_KEY)
 
 def get_retriever():
-    db = get_vectorstore()
-    return db.as_retriever(
-        search_type="mmr",  # better diversity
-        search_kwargs={
-            "k": 8,         # increased from 3
-            "fetch_k": 20   # fetch more candidates
-        }
+    """Get vector store retriever"""
+    embeddings = get_embeddings()
+    vectorstore = Chroma(
+        persist_directory="data/chroma_db",
+        embedding_function=embeddings
     )
+    return vectorstore.as_retriever()
+
+def get_vectorstore():
+    """Get vector store for adding documents"""
+    embeddings = get_embeddings()
+    vectorstore = Chroma(
+        persist_directory="data/chroma_db",
+        embedding_function=embeddings
+    )
+    return vectorstore
